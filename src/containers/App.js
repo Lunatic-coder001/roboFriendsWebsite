@@ -15,9 +15,9 @@ class  App extends Component {
 
         }
     }
-    /*Fetch is a method on the window object.It comes with all browsers.Now it is a tool for us to make requests.To service and as you can
-     see, this is a server that returns for us when we do / users, a list of users that we can use, which is perfect for our wrap.
-And finally, you're wondering what if this was really slow?*/
+    /*Fetch is a method on the window object.Now it is a tool for us to make requests.To service and as you can
+     see, this is a server that returns for us when we do / users, a list of users that we can use.
+     And finally, you're wondering what if this was really slow?*/
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response=>  response.json())
@@ -25,11 +25,16 @@ And finally, you're wondering what if this was really slow?*/
     }
 
     onSearchChange=(event) =>{
-        this.setState({ searchfield: event.target.value})
-        
-        
+        this.setState({ searchfield: event.target.value})    
     }
+    
     //(robot not robots)
+/*We have our app component that has two states.Robots and search field and because app owns the state, any component that has state uses 
+the class syntax so they can use the constructor function to create this.state and this state is what changes in an app.It's what 
+describes the app.Remember when I said the virtual dom is just a JavaScript object?The virtual dom is just an object that collects this 
+entire state and react uses this state to render and pass them down as props to these components so that these components that are just 
+pure functions can just render. We always just create a new array called filtered robots and we always pass that down.Does this need to 
+be part of the state and right now? Not really, because we're just have a hardcoded robot.*/
     render(){
         const { robots,searchfield}= this.state;
         const filteredRobots=robots.filter(robots =>{
@@ -77,9 +82,3 @@ And within this event, I'm going to console log, this event. Created a function.
   mind as a rule of thumb.With anything that comes from react so constructor and render are pre-built and react, any time you make your 
   own methods on a component, use this syntax. So arrow fxn will make sure that its the app*/
 
-/*We have our app component that has two states.Robots and search field and because app owns the state, any component that has state uses 
-the class syntax so they can use the constructor function to create this DOT state and this state is what changes in an app.It's what 
-describes the app.Remember when I said the virtual dom is just a JavaScript object?The virtual dom is just an object that collects this 
-entire state and react uses this state to render and pass them down as props to these components so that these components that are just 
-pure functions can just render. We always just create a new array called filtered robots and we always pass that down.Does this need to 
-be part of the state and right now? Not really, because we're just have a hardcoded robot.*/
